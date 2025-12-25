@@ -10,14 +10,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap');
 
 :root{
-    --color-main: #d400ff;
-    --color-sub: #00A200;
-    --color-dark: #2F4858;
-    --color-emph: #f10fb8;
+    --color-main: #00144b;
+    --color-sub: #000000;
+    --color-dark: #00144b;
+    --color-emph: #0b5b8a;
     --color-text: #281812;
-    --color-lighter: #DC9C86;
-    --color-light-bd: #FFE6D6;
-    --color-light-bg: #FFF5ED;
+    --color-lighter: #8693dc;
+    --color-light-bd: #ffffff;
+    --color-light-bg: #edfbff;
 
     --font-code: 'Nanum Gothic',  monospace;
 
@@ -27,7 +27,7 @@
     --font-size-larger: 20px;
     --font-size-text: 18px;
 
-    --height-toolbar: 72px;
+    --height-toolbar: 65px;
 }
 
 body{

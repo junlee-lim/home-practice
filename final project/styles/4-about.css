@@ -26,7 +26,7 @@
     color: #FFB974;
 }
 .about__title_2{
-    color: #6BB0F3;
+    color: #6bf398;
 }
 .about__title_3{
     color: #FFBDCE;
@@ -49,7 +49,7 @@
     }
     .about__card{
         position: relative;
-        width: 320px;
+        width: 100%;
         cursor: pointer;
         transition: all 350ms;
     }

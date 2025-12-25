@@ -1,13 +1,12 @@
 .header{
     display: flex;
     position: sticky;
-    z-index: 10; /*gpt 도움*/
-    margin-top: -80px; /*gpt 도움*/
+    z-index: 2;
     top: 0;
     height: var(--height-toolbar);
     justify-content: space-between;
     align-items: center;
-    border-color: var(--color-main);
+    background-color: var(--color-main);
     color: white;
 }
 .header__homelink{
@@ -24,6 +23,7 @@
 }
 .header__nav-item{
     font-size: var(--font-size-larger);
+    font-weight: bold;
 }
 .header__nav-item a{
     display: inline-block;
@@ -65,7 +65,7 @@
         width: 100vw;
     }
     .header__nav-item:not(:last-child){
-        border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 5px solid rgba(255, 255, 255, 0.06);
     }
 }
 
@@ -83,7 +83,7 @@
     .header__nav-item::after{
         content: '';
         position: absolute;
-        bottom: 0px;
+        bottom: 0;
         left: 50%;
         width: 0;
         height: 0;
