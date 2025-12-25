@@ -1,3 +1,4 @@
+
 .html-css{
     margin: 56px 0;
     display: inline-flex;
@@ -49,7 +50,7 @@
     background-color: black;
     border-radius: 50%;
 }
-.html-css__logo{
+.html-css__logo, .html-css__logo_css{
     animation-name: logo-hover;
     animation-duration: 800ms;
     animation-timing-function: ease-in-out;
@@ -71,8 +72,11 @@
     .html-css{
         flex-direction: column;
     }
-    .html-css__logo{
+    .html-css__logo {
         width: 50%;
+    }
+    .html-css__logo_css{
+        width: 40%;
     }
     .html-css__content{
         text-align: center;
@@ -90,9 +94,9 @@
 
 @media (min-width: 769px) {
     #html{
-        border-right: 4px solid var(--color-light-bg);
+        border-right: 4px solid var(--color-dark);
     }
-    .html-css__logo{
+    .html-css__logo, .html-css__logo_css{
         width: 144px;
     }
     .html-css__content {

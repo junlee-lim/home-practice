@@ -119,7 +119,7 @@
             <dt class="sr-only">종류</dt>
             <dd>마크업</dd>
             <dt class="sr-only">용도</dt>
-            <dd>웹 개발</dd>
+            <dd>웹개발</dd>
             <dt class="sr-only">난이도</dt>
             <dd>쉬움</dd>
           </dl>
@@ -137,7 +137,7 @@
       </header>
       <article class="html-css _css">
         <figure class="html-css__thumb">
-          <img src="./images/logo-css.svg" alt="css 로고" class="html-css__logo">
+          <img src="./images/logo-css.svg" alt="css 로고" class="html-css__logo_css">
         </figure>
         <div class="html-css__content">
           <h2 class="html-css__title">
@@ -182,6 +182,60 @@
         </ol>
       </div>
     </section>
+    <section id="contact" class="section">
+      <header class="section__header">
+        <strong class="section__tag">
+          contact
+        </strong>
+        <h1 class="section__title">
+          문의하기
+        </h1>
+      </header>
+      <div class="contact">
+        <div class="contact__tab">
+          <input name="contact" type="radio" id="ct_1" checked>
+          <label for="ct_1" class="sr-only">연락처</label>
+          <input name="contact" type="radio" id="ct_2">
+          <label for="ct_2" class="sr-only">메시지</label>
+          <div class="contact__slides">
+            <div class="contact__slide-con">
+              <div class="contact__slide">
+                <address>
+                  <table class="contact__contacts">
+                    <caption class="sr-only">연락처 목록</caption>
+                    <tr>
+                      <th>블로그 & 이메일</th>
+                      <td>
+                        <a href="https://blog.naver.com/myyouthhada"><img src="./images/1.png" alt="">
+                          <br>myyouthhada@naver.com
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </address>
+              </div>
+              <div class="contact__slide">
+                <form action="#" method="get">
+                  <div class="contact__leave">
+                    <textarea name="message" placeholder="메시지를 입력하세요." required></textarea>
+                    <div>
+                      <input type="email" name="email" placeholder="메일 주소를 입력하세요." required>
+                      <button type="submit">남기기</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+  <footer>
+    <h1 class="sr-only">Copyright</h1>
+    <p>
+      2025 Junlee - All rights reserved
+    </p>
+  </footer>
 </body>
 </html>

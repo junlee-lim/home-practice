@@ -45,7 +45,7 @@
 
 @media (max-width: 768px) {
     .intro{
-        height: 90vh;
+        height: 93vh;
     }
     .intro__type{
         margin-top: 36vh;
@@ -56,10 +56,10 @@
 
 @media (min-width: 769px) {
     .intro{
-        height: 90vh;
+        height: 93vh;
     }
     .intro__type{
-        margin-top: 172px;
+        margin-top: 36vh;
         align-items: center;
     }
     .intro__type span{
