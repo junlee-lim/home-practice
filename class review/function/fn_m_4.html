@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        ICON EDITOR
+    </h1>
+    <div id="editor"></div>
+
+    <script>
+        function makeElement(name, attributes){
+            const node = document.createElement(name);
+            if(attributes){
+                for(const item in attributes){
+                    node.setAttribute(item, attributes[item]);
+                }
+            }
+            return node;
+        }
+
+        function createIconEditor(target, nx, ny){
+            const $inputColor = makeElement('input', {type: 'color'});
+            target.append($inputColor); //append : target(=$editor_)의 자식으로 추가
+
+            const $inputColorClear = makeElement('input', {type: 'button', value:'clear'})
+            target.append($inputColorClear);
+
+            const $table = makeElement('table');
+            target.append($table);
+            $table.style.borderCollapse = 'collapse';
+            $table.style.margitTop = '5px';
+
+            for(let y=0; y<ny; y++){
+                const $tr = makeElement('tr')
+                $table.append($tr);
+                for(let x=0; x<nx; x++){
+                    const $td = makeElement('td')
+                    $tr.append($td);
+                    $td.style.width = $td.style.height = '15px';
+                    $td.style.border = '1px solid gray';
+
+                    $td.addEventListener('click', e => {
+                        e.target.style.backgroundColor = //td를 클릭했을 때 그 클릭한 부분(e.target)의 배경 색깔
+                        e.target.style.backgroundColor ? '' : $inputColor.value; //조건에 값이 있으면 true, 없으면 false
+                    })
+                }
+            }
+            $inputColorClear.addEventListener('click', () => {
+                const section = document.querySelectorAll('td');
+                for(const item of section){
+                    item.style.backgroundColor = '' //여기서 사용한 item은 위에서 사용한 e.target이랑 같은 역할, section안에 td의 배열이 담겨 있고 'const item of section'으로 인해 item에는 td의 요소들이 순차적으로(for구문 썼으니까) 담김.
+                }
+            })
+        }
+
+        const $editor = document.querySelector('#editor');
+        createIconEditor($editor, 20, 20);
+        
+    </script>
+
+</body>
+</html>
