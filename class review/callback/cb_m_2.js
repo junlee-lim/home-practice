@@ -15,10 +15,9 @@ const myArr = {
     'filter': function(fn1){
         const temp = [];
 //여기 부분에 조건을 써서 아래 filter 함수 조건에 맞는 결과가 나오게 하기.
-        for(let i=0; i<myArr.length; i++){
-           if(fn1(this[i])){
-            temp.push(this[i]);
-           }
+        for(let i=0; i<myArr.length; i++){        
+            const result = fn1(this[i], i)
+            if(result){temp.push(this[i])}
         }
         return temp;
     },
@@ -26,8 +25,9 @@ const myArr = {
     'map': function(fn1){
         const temp = [];
 //여기 부분에 조건을 써서 아래 map 함수 조건에 맞는 결과가 나오게 하기.
-        for(let i=0; i<myArr.length; i++){
-            temp.push(fn1(this[i]));
+        for(let i=0; i<myArr.length; i++){        
+            const result = fn1(this[i], i)
+            temp.push(result)
         }
         return temp;
     }

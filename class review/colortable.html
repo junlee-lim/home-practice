@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        박민혁에게 보내는 선물
+    </h1>
+    <p>
+        행운과 사랑이 가득가득!!
+    </p>
+    <div id="editor"></div>
+
+    <script>
+        function makeElement(name, attributes){
+            const node = document.createElement(name);
+            if(attributes){
+                for(const item in attributes){
+                    node.setAttribute(item, attributes[item]);
+                }
+            }
+            return node;
+        }
+
+        function createIconEditor(target, nx, ny){
+        const $inputColor = makeElement('input', {type: 'color'})
+        target.append($inputColor)
+        
+        const $inputColorClear = makeElement('input', {type: 'button', value: 'clear'})
+        target.append($inputColorClear)
+
+            const $table = makeElement('table')
+            target.append($table)
+            $table.style.borderCollapse = 'collapse';
+            $table.style.marginTop = '5px';
+
+            for(let y=0; y<ny; y++){
+                const $tr = makeElement('tr')
+                $table.append($tr)
+                for(let x=0; x<nx; x++){
+                    const $td = makeElement('td')
+                    $td.style.width = $td.style.height = '15px';
+                    $td.style.border = '1px solid gray';
+                    $tr.append($td)
+                  //$td를 클릭했을 때 그 클릭한 부분(e.target)의 배경 색깔이 있으면 지우고, 없으면 추가하도록
+                    $td.addEventListener('click', e => {
+                        e.target.style.backgroundColor =
+                        e.target.style.backgroundColor ? '' : $inputColor.value
+                    })
+                }
+            }
+            //$inputColorClear 클릭하면 td 배열 내의 모든 요소가 비워지도록 하기
+            $inputColorClear.addEventListener('click', () => {
+                const clearbtn = document.querySelectorAll('td');
+                clearbtn.forEach(($td) => {
+                    $td.style.backgroundColor = ''
+                })
+            })
+        }
+
+        const $editor = document.querySelector('#editor');
+        createIconEditor($editor, 20, 20);
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax01.html</title>
+    <style>
+        #page-container span { 
+            display:inline-block; margin-left: 10px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-container"></div>
+    <div id="container"></div>
+    <script>
+        const makePageContainer = (pageValue) => {
+           //<span>1</span> ~ <span>10</span> 태그를 page-container안에 생성되도록 해주세요.
+           
+                //span 부분(숫자)을 클릭하면 getData 부분이 실행되게 해주세요.
+ 
+        }
+        makePageContainer(10);
+
+        const getData = page => {
+            fetch(`https://picsum.photos/v2/list?limit=50&page=${page}`)
+            .then( res => res.json() )
+            .then( json => procItems(json) )
+            .catch( err => {
+                alert('에러 발생!');
+                console.log(err);
+            } );
+        }
+        getData(1);
+        
+        
+        const $container = document.querySelector('#container');
+
+        const procItems = list => {
+            $container.innerText = null; //실행될 때마다 일단 비우고 시작 => 페이지 마다 사진이 누적되지 않게 하기 위함
+            list.forEach( (item, i) => {
+                const elem = makeItem(item);
+                //컨테이너의 자식으로 elem이 들어가게 해주세요.
+                
+            } );
+        }
+
+        const makeItem = data => {
+            // 기존이미지 크기보다 1/10 작은 이미지가 뜰 수 있도록 해주세요.
+            
+            const div = document.createElement('div');
+            div.className = 'aaa bbb'; //이렇게 class 이름도 줄 수 있음.
+            div.innerHTML = `
+                <img src="https://picsum.photos/id/${data.id}/${width}/${height}" alt="${data.author} 작가가 찍은 사진">
+                <div>${data.author}</div>
+            `;
+            return div;
+        }
+    </script>
+</body>
+</html>
