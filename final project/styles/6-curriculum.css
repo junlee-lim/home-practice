@@ -1,4 +1,4 @@
-#curriculum{
+/* #curriculum{
     background-color: var(--color-dark);
 }
 #curriculum .section__title, #curriculum .section__tag{
@@ -131,4 +131,129 @@
     ~ .curriculum__progress::after{
         width: 1000px;
     }
+} */
+
+/* 1. 모든 섹션 공통: 중앙 정렬 및 너비 제한 */
+#curriculum .section__tag{
+    color: white;
+}
+.section {
+    width: 100%;
+    max-width: 1432px; /* 사용자의 PC 가로 길이 기준 */
+    margin: 0 auto;    /* 좌우 마진 자동 (중앙 정렬 핵심) */
+    padding: 80px 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+.section__title{
+    color: white;
+}
+
+/* 2. 커리큘럼 섹션 특수 설정: 배경색만 화면 전체로 확장 */
+#curriculum {
+    grid-column: span 2; /* 부모가 Grid일 경우 2칸을 점유 */
+    width: 100%;
+    max-width: none; 
+    background-color: #00144b;
+    padding: 80px 0;
+    overflow: hidden; /* 별들이 섹션 밖으로 나가지 않게 함 */
+
+    /* 별빛 배경 생성 (작은 원형 그라데이션들을 겹침) */
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 100px 150px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 200px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 350px 250px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 500px 50px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 700px 180px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 850px 300px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 1100px 100px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 1300px 220px, #fff, rgba(0,0,0,0));
+    background-size: 1400px 400px; /* 배경 반복 사이즈 */
+    animation: twinkle 4s ease-in-out infinite; /* 반짝이는 애니메이션 */
+}
+
+/* 3. 커리큘럼 내부 콘텐츠만 다시 중앙 정렬 */
+.curriculum-universe {
+    max-width: 1432px; /* 다른 섹션들과 너비 맞춤 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    min-height: 400px;
+    align-content: center;
+}
+
+/* 4. 가로 스크롤 방지 (중요) */
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* 행성 기본 공통 스타일 */
+.planet {
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    /* 입체감을 위해 그림자 살짝 추가 */
+    box-shadow: inset -15px -15px 30px rgba(0,0,0,0.7);
+}
+
+/* 행성별 색상 설정 (원하는 색상으로 변경 가능) */
+.planet-1 { background: radial-gradient(circle at 30% 30%, #ff5f6d, #ffc371); width: 80px; height: 80px; }
+.planet-2 { background: radial-gradient(circle at 30% 30%, #2193b0, #6dd5ed); width: 110px; height: 110px; }
+.planet-3 { background: radial-gradient(circle at 30% 30%, #ee9ca7, #ffdde1); width: 90px; height: 90px; }
+.planet-4 { background: radial-gradient(circle at 30% 30%, #11998e, #38ef7d); width: 120px; height: 120px; }
+.planet-5 { background: radial-gradient(circle at 30% 30%, #8e2de2, #4a00e0); width: 95px; height: 95px; }
+.planet-6 { background: radial-gradient(circle at 30% 30%, #f7971e, #ffd200); width: 130px; height: 130px; }
+
+/* 빛나는 효과 (핵심) */
+.planet.active, .planet:hover {
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.8), 
+                inset -5px -5px 15px rgba(0,0,0,0.3);
+    transform: scale(1.1);
+}
+
+/* 행성 이름표 */
+.planet-label {
+    position: absolute;
+    width: 300px;
+    min-width: fit-content;
+    bottom: -60px; /* 행성들 아래쪽 적당한 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
+    padding: 10px 30px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+/* 모바일 환경 */
+@media (max-width: 768px) {
+    .curriculum-universe {
+        gap: 30px;
+        min-height: 600px;
+    }
+    .planet:hover {
+        box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5); /* 모바일 hover 효과 제거 */
+        transform: none;
+    }
+    .planet.active {
+        box-shadow: 0 0 40px 15px rgba(255, 255, 255, 0.9);
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width: 769px) {
+    .planet-1 { margin-top: -20px; }
+    .planet-3 { margin-top: 40px; }
+    .planet-5 { margin-top: -30px; }
 }

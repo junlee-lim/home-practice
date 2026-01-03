@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
   <link rel="stylesheet" href="./style.css">
-
+  <script defer src="./script.js"></script>
 </head>
 <body>
   <section class="intro">
@@ -27,10 +27,12 @@
         <img class="header__logo" src="images/home.png" alt="홈으로">
       </a>
     </h1>
-    <input class="header__menu-btn" type="checkbox">
+    <button class="header__menu-btn"></button>
     <nav class="header__nav">
+    <!-- <input class="header__menu-btn" type="checkbox">
+    <nav class="header__nav"> -->
       <ul>
-        <li class="header__nav-item">
+        <!-- <li class="header__nav-item">
           <a href="#about">about</a>
         </li>
         <li class="header__nav-item">
@@ -44,7 +46,7 @@
         </li>
         <li class="header__nav-item">
           <a href="#contact">contact</a>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </header>
@@ -59,7 +61,7 @@
         </h1>
       </header>
       <div class="about">
-        <div class="about__card">
+        <!-- <div class="about__card">
           <img class="about__icon" src="images/about_1.svg" alt="">
           <h2 class="about__title_1">
             Lorem, ipsum.
@@ -88,7 +90,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
             Porro voluptates maiores nisi deleniti in fugit molestias.
           </p>
-        </div>
+        </div> -->
       </div>
     </section>
     <section id="html" class="section">
@@ -161,7 +163,7 @@
         </div>
       </article>
     </section>
-    <section id="curriculum" class="section">
+    <!-- <section id="curriculum" class="section">
       <header class="section__header">
         <strong class="section__tag">
           curriculum
@@ -178,8 +180,27 @@
           <li><span>html 심화</span></li>
           <li><span>css 심화</span></li>
           <li><span>파이널 프로젝트</span></li>
-          <div class="curriculum__progress"></div>
         </ol>
+        <div class="curriculum__progress">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </section> -->
+    <section id="curriculum" class="section">
+        <header class="section__header">
+          <strong class="section__tag">curriculum</strong>
+          <h1 class="section__title">우주 커리큘럼</h1>
+        </header>
+    
+      <div class="curriculum-universe">
+        <div class="planet planet-1" data-name="강의 소개"></div>
+        <div class="planet planet-2" data-name="HTML 기초"></div>
+        <div class="planet planet-3" data-name="CSS 기초"></div>
+        <div class="planet planet-4" data-name="HTML 심화"></div>
+        <div class="planet planet-5" data-name="CSS 심화"></div>
+        <div class="planet planet-6" data-name="파이널 프로젝트"></div>
+      
+        <div class="planet-label">행성을 선택하세요</div>
       </div>
     </section>
     <section id="contact" class="section">
@@ -197,6 +218,7 @@
           <label for="ct_1" class="sr-only">연락처</label>
           <input name="contact" type="radio" id="ct_2">
           <label for="ct_2" class="sr-only">메시지</label>
+        </div>
           <div class="contact__slides">
             <div class="contact__slide-con">
               <div class="contact__slide">
@@ -218,16 +240,13 @@
                 <form action="#" method="get">
                   <div class="contact__leave">
                     <textarea name="message" placeholder="메시지를 입력하세요." required></textarea>
-                    <div>
                       <input type="email" name="email" placeholder="메일 주소를 입력하세요." required>
                       <button type="submit">남기기</button>
-                    </div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   </main>

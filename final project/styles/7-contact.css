@@ -1,5 +1,11 @@
+*{
+    box-sizing: border-box;
+}
 #contact{
     padding: 50px 0 20px 0;
+}
+#contact .section__title{
+    color: var(--color-dark);
 }
 .contact{
     margin-top: 3em;
@@ -28,19 +34,22 @@ input[type=radio]:checked{
 
 .contact__slides{
     margin: 1.6em 0;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
 }
 .contact__slide-con{
     display: flex;
-    width: 200vw;
+    width: 200%;
     transition: margin-left 500ms;
 }
 .contact__slide{
-    width: 100vw;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #ct_1:checked ~ .contact__slides .contact__slide-con{
-    margin-left: 0;
+    margin-left: -100%;
 }
 #ct_2:checked ~ .contact__slides .contact__slide-con{
     margin-left: -100vw;
@@ -67,7 +76,7 @@ input[type=radio]:checked{
 .contact__leave input[type=email]{
     margin: 0;
     font-size: var(--font-size-text);
-    border: 2px solid var(--color-light-bd);
+    border: 2px solid var(--color-dark);
 }
 .contact__leave textarea::placeholder,
 .contact__leave input[type=email]::placeholder{
@@ -136,10 +145,18 @@ input[type=radio]:checked{
     }
     .contact__leave{
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .contact__leave textarea,
     .contact__leave input[type=email]{
-        width: 80vw;
+        width: 90%;
+    }
+    .contact__leave textarea{
+        height: 200px;
+    }
+    .contact__leave button{
+        width: 300px;
     }
 }
 
@@ -156,8 +173,14 @@ input[type=radio]:checked{
         margin: 0 auto;
         width: 250px;
     }
+    .contact__leave{
+        flex-direction: column;
+    }
     .contact__leave textarea,
     .contact__leave input[type=email]{
-        width: 330px;
+        width: 600px;
+    }
+    .contact__leave textarea{
+        height: 200px;
     }
 }

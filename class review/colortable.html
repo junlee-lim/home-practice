@@ -8,11 +8,8 @@
 </head>
 <body>
     <h1>
-        박민혁에게 보내는 선물
+        ICON EDITOR
     </h1>
-    <p>
-        행운과 사랑이 가득가득!!
-    </p>
     <div id="editor"></div>
 
     <script>
@@ -27,39 +24,54 @@
         }
 
         function createIconEditor(target, nx, ny){
-        const $inputColor = makeElement('input', {type: 'color'})
-        target.append($inputColor)
-        
-        const $inputColorClear = makeElement('input', {type: 'button', value: 'clear'})
-        target.append($inputColorClear)
+            const $inputColor = makeElement('input', {type: 'color'});
+            target.append($inputColor);
+            const $inputColorClear = makeElement('input', {type: 'button', value: 'clear'})
+            target.append($inputColorClear)
+            let isDrawing = false;
+            $inputColorClear.addEventListener('click', () => {
+                const tdList = document.querySelectorAll('td');
+                for(const item of tdList){
+                    item.style.backgroundColor = '';
+                }
+            });
 
-            const $table = makeElement('table')
-            target.append($table)
+            //테이블 만들기
+            const $table = makeElement('table');
+            //target의 자식으로 추가하기
+            target.append($table);
             $table.style.borderCollapse = 'collapse';
             $table.style.marginTop = '5px';
 
+            //for구문이랑 ny, nx 사용하여 행이랑 칸 만들기(tr: 행, td: 칸)
             for(let y=0; y<ny; y++){
-                const $tr = makeElement('tr')
-                $table.append($tr)
+                const $tr = makeElement('tr');
+                $table.append($tr);
                 for(let x=0; x<nx; x++){
-                    const $td = makeElement('td')
+                    const $td = makeElement('td');
                     $td.style.width = $td.style.height = '15px';
                     $td.style.border = '1px solid gray';
                     $tr.append($td)
-                  //$td를 클릭했을 때 그 클릭한 부분(e.target)의 배경 색깔이 있으면 지우고, 없으면 추가하도록
-                    $td.addEventListener('click', e => {
-                        e.target.style.backgroundColor =
-                        e.target.style.backgroundColor ? '' : $inputColor.value
+                    $td.addEventListener('click', (e) => {
+                        e.target.style.backgroundColor = e.target.style.backgroundColor ? '' : $inputColor.value
                     })
+                    $td.addEventListener('mousedown', (e) => {
+                        isDrawing = true;
+                        e.target.style.backgroundColor = $inputColor.value;
+                    });
+
+                    // 마우스가 위를 지나갈 때
+                    $td.addEventListener('mouseover', (e) => {
+                        if(isDrawing) {
+                            e.target.style.backgroundColor = $inputColor.value;
+                        }
+                    });
+                    window.addEventListener('mouseup', () => {
+                        isDrawing = false;
+                    });
                 }
             }
-            //$inputColorClear 클릭하면 td 배열 내의 모든 요소가 비워지도록 하기
-            $inputColorClear.addEventListener('click', () => {
-                const clearbtn = document.querySelectorAll('td');
-                clearbtn.forEach(($td) => {
-                    $td.style.backgroundColor = ''
-                })
-            })
+            //$inputColorClear 클릭하면 td 배열 내의 모든 요소가 비워지도록 하기, *tdList라는 이름으로 td 선택 
         }
 
         const $editor = document.querySelector('#editor');

@@ -45,10 +45,10 @@
         background-repeat: no-repeat;
         background-position: center;
     }
-    .header__menu-btn:checked{
+    .header__menu-btn.on{
         background-color: var(--color-dark);
     }
-    .header__menu-btn:checked + .header__nav{
+    .header__nav.active{
         display: inherit;
         position: absolute;
         top: var(--height-toolbar);

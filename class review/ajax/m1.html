@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajax01.html</title>
+    <title>Document</title>
     <style>
         #page-container span { 
             display:inline-block; margin-left: 10px; 
@@ -15,11 +15,45 @@
     <div id="page-container"></div>
     <div id="container"></div>
     <script>
+        const makeItem = data => {
+            //넓이랑 높이가 1/10 작은 이미지가 뜰 수 있게 해주세요.
+            const width = parseInt(data.width/10)
+            const height = parseInt(data.height/10)
+            //div라는 이름에 div 요소를 생성하고, div.innerHTML을 사용해서 내부에 img랑 작가 이름이 나오도록.
+            //링크: https://picsum.photos/id/${data.id}/${width}/${height}, 작가 이름:${data.author}
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <img src="https://picsum.photos/id/${data.id}/${width}/${height}"></img>
+                <div>작가 이름: ${data.author}</div>
+            `
+            return div;
+        }
+
+        const $container = document.querySelector('#container');
+
+        const procItems = list => {
+            //실행될 때마다 $container를 비워주세요.(페이지마다 사진이 누적되지 않게)
+            $container.innerText = null;
+            //list에 값이 item이 반복되어 나오도록 해주고, 그 값이 $container의 자식이 되게 해주세요.
+            list.forEach(item => {
+                const elem = makeItem(item)
+                $container.append(elem)
+            });
+        }
+
         const makePageContainer = (pageValue) => {
-           //<span>1</span> ~ <span>10</span> 태그를 page-container안에 생성되도록 해주세요.
-           
-                //span 부분(숫자)을 클릭하면 getData 부분이 실행되게 해주세요.
- 
+            //$pagecontainer에 #page-container를 불러와주세요.
+            const $pagecontainer = document.querySelector('#page-container');
+            //1~10까지의 숫자가 가로로 일렬 배열되게 해주고, $pagecontainer의 자식으로 들어오게 해주세요.
+            for(let i = 1; i<=10; i++){
+                const num = document.createElement('span')
+                num.innerText = i
+                $pagecontainer.append(num)
+                //숫자를 클릭하면 getData(i) 값이 나오게 해주세요.
+                num.addEventListener('click', () => {
+                    getData(i);
+                })
+            }
         }
         makePageContainer(10);
 
@@ -33,30 +67,6 @@
             } );
         }
         getData(1);
-        
-        
-        const $container = document.querySelector('#container');
-
-        const procItems = list => {
-            $container.innerText = null; //실행될 때마다 일단 비우고 시작 => 페이지 마다 사진이 누적되지 않게 하기 위함
-            list.forEach( (item, i) => {
-                const elem = makeItem(item);
-                //컨테이너의 자식으로 elem이 들어가게 해주세요.
-                
-            } );
-        }
-
-        const makeItem = data => {
-            // 기존이미지 크기보다 1/10 작은 이미지가 뜰 수 있도록 해주세요.
-            
-            const div = document.createElement('div');
-            div.className = 'aaa bbb'; //이렇게 class 이름도 줄 수 있음.
-            div.innerHTML = `
-                <img src="https://picsum.photos/id/${data.id}/${width}/${height}" alt="${data.author} 작가가 찍은 사진">
-                <div>${data.author}</div>
-            `;
-            return div;
-        }
     </script>
 </body>
 </html>

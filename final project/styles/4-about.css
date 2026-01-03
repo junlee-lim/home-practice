@@ -1,3 +1,8 @@
+#about{
+    background-color: var(--color-dark);
+    width: 100%;
+    max-width: none; 
+}
 .about{
     display: inline-flex;
     gap: 1em;
@@ -32,6 +37,9 @@
 .about__text{
     margin-top: 0.8em;
     font-size: var(--font-size-text);
+}
+#about .section__tag{
+    color: white;
 }
 
 @media (max-width: 768px) {

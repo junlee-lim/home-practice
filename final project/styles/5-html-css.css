@@ -1,8 +1,13 @@
-
 .html-css{
     margin: 56px 0;
     display: inline-flex;
     gap: 56px;
+}
+#html .section__title{
+    color: var(--color-dark);
+}
+#css .section__title{
+    color: var(--color-dark);
 }
 .html-css__desc{
     margin-top: 1.6em;
